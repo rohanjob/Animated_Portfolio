@@ -1,7 +1,8 @@
-# My Portfolio Wesbite - Overview 🚀
+# Sai Teja Epuri - DevOps & Cloud Engineer Portfolio 🚀
 
-This repository contains the open source version of my porfolio website.
-Do check it out!
+![Portfolio Preview](./public/images/preview.png)
+
+This repository contains the source code for my personal portfolio website.
 
 ## Instructions 🛠️
 
