@@ -42,6 +42,8 @@
 
 .carousel-slide {
   min-width: 100%;
+  width: 100%;
+  max-width: 100%;
   flex-shrink: 0;
   box-sizing: border-box;
   padding: 50px 0;
@@ -59,6 +61,7 @@
   display: flex;
   gap: 30px;
   align-items: flex-start;
+  min-width: 0;
 }
 
 .carousel-number h3 {
@@ -73,6 +76,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 0;
 }
 
 .carousel-details h4 {
@@ -105,6 +109,19 @@
   color: #adacac;
   margin: 6px 0 0;
   font-size: 15px;
+}
+
+.project-highlight-list {
+  font-weight: 200;
+  color: #adacac;
+  margin: 10px 0 0 20px;
+  padding: 0;
+  font-size: 15px;
+}
+
+.project-highlight-list li {
+  margin-bottom: 6px;
+  line-height: 1.5;
 }
 
 .carousel-image-wrapper {

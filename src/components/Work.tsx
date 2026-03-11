@@ -5,36 +5,51 @@ import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
 const projects = [
   {
-    title: "Solid Starters",
-    category: "Low-Code Platform",
-    tools: "Angular, Next.js, NestJS, MongoDB",
-    image: "/images/Solidx.png",
+    title: "Frontend Deployment Build Using Maven with CI/CD On Azure (06/2025)",
+    category: "CI/CD Pipeline — Azure DevOps",
+    description: [
+      "Developed and deployed a Frontend Application Using Maven as the Build Automation.",
+      "Designed and Implemented a CI/CD Pipeline in Azure DevOps to automate Build, Test, and Deployment Stages.",
+      "Integrated GitHub with Azure Pipelines to trigger builds on Code Commits.",
+      "Deployed the Application on Azure Kubernetes Services (AKS) Using Containerized Workloads."
+    ],
+    image: "/images/project1.png",
   },
   {
-    title: "Radix",
-    category: "E-Commerce",
-    tools: "Angular, Next.js, NestJS, CMS",
-    image: "/images/radix.png",
+    title: "Deployment of Three-Tier Application on AKS Using Pipelines (08/2025)",
+    category: "Kubernetes Deployment — Azure DevOps",
+    description: [
+      "Built a Complete Three-tier Architecture (Frontend, Backend, Database) and Implemented full CI/CD Pipelines Using Azure DevOps.",
+      "Containerized each Tier Using Docker, Stored Images in ACR, and orchestrated deployments on Azure Kubernetes Services (AKS).",
+      "Automated Environment Provisioning Using YAML Pipelines and Kubernetes manifests, (Deployments, Services, ConfigMaps, Secrets).",
+      "Integrated Monitoring and logging Using Azure Monitor."
+    ],
+    image: "/images/project2.png",
   },
   {
-    title: "Bond Cancellation",
-    category: "Import-Export Automation",
-    tools: "Angular, Next.js, NestJS, Workflows",
-    image: "/images/bond.png",
+    title: "Deployment of Three-Tier Application Using Python (Flask) (09/2025)",
+    category: "Containerized Microservices",
+    description: [
+      "Developed a Three-Tier Web Application with React.js as Frontend and Flask (Python) as Backend with database integration managed in backend services.",
+      "Containerized the complete application using Docker to ensure portability, consistency, and efficient deployment across environments.",
+      "Designed and structured backend services to handle database connectivity, request handling, and API communication securely and efficiently.",
+      "Integrated Monitoring and logging Using Azure Monitor."
+    ],
+    image: "/images/project3.png",
   },
   {
-    title: "Sapphire",
-    category: "CRM Platform",
-    tools: "AngularJS, NestJS, PostgreSQL",
-    image: "/images/sapphire.png",
-  },
-  {
-    title: "Mpro",
-    category: "Insurance Platform",
-    tools: "React.js, Node.js, Microservices",
-    image: "/images/Maxlife.png",
+    title: "Deployment of Three-Tier Application Using GitHub CI/CD (11/2025)",
+    category: "Automated Deployment — GitHub Actions",
+    description: [
+      "Implemented GitHub Actions–based CI/CD pipelines to automate build and deployment workflows for both frontend and backend.",
+      "Configured pipelines to trigger on every push, performing NuGet restore, MSBuild compilation, and validation steps.",
+      "Deployed Next.js frontend and .NET backend APIs to Azure App Service, ensuring reliable and scalable hosting.",
+      "Used secure publish profiles, secrets management, and environment configurations to enable safe, production-ready deployments."
+    ],
+    image: "/images/project4.png",
   },
 ];
+
 
 const Work = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -109,8 +124,12 @@ const Work = () => {
                           {project.category}
                         </p>
                         <div className="carousel-tools">
-                          <span className="tools-label">Tools & Features</span>
-                          <p>{project.tools}</p>
+                          <span className="tools-label">Project Highlights</span>
+                          <ul className="project-highlight-list">
+                            {project.description.map((desc, i) => (
+                              <li key={i}>{desc}</li>
+                            ))}
+                          </ul>
                         </div>
                       </div>
                     </div>
