@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import setCharacter from "./utils/character";
 import setLighting from "./utils/lighting";
@@ -18,8 +18,7 @@ const Scene = () => {
   const hoverDivRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef(new THREE.Scene());
   const { setLoading } = useLoading();
-
-  const [character, setChar] = useState<THREE.Object3D | null>(null);
+  const characterRef = useRef<THREE.Object3D | null>(null);
   useEffect(() => {
     if (canvasDiv.current) {
       let rect = canvasDiv.current.getBoundingClientRect();
@@ -50,7 +49,7 @@ const Scene = () => {
       const clock = new THREE.Clock();
 
       const light = setLighting(scene);
-      let progress = setProgress((value) => setLoading(value));
+      const progress = setProgress((value) => setLoading(value));
       const { loadCharacter } = setCharacter(renderer, scene, camera);
 
       loadCharacter().then((gltf) => {
@@ -58,8 +57,8 @@ const Scene = () => {
           const animations = setAnimations(gltf);
           hoverDivRef.current && animations.hover(gltf, hoverDivRef.current);
           mixer = animations.mixer;
-          let character = gltf.scene;
-          setChar(character);
+          const character = gltf.scene;
+          characterRef.current = character;
           scene.add(character);
           headBone = character.getObjectByName("spine006") || null;
           screenLight = character.getObjectByName("screenlight") || null;
@@ -131,7 +130,7 @@ const Scene = () => {
         scene.clear();
         renderer.dispose();
         window.removeEventListener("resize", () =>
-          handleResize(renderer, camera, canvasDiv, character!)
+          handleResize(renderer, camera, canvasDiv, characterRef.current!)
         );
         if (canvasDiv.current) {
           canvasDiv.current.removeChild(renderer.domElement);
@@ -140,9 +139,9 @@ const Scene = () => {
           document.removeEventListener("mousemove", onMouseMove);
           landingDiv.removeEventListener("touchstart", onTouchStart);
           landingDiv.removeEventListener("touchend", onTouchEnd);
-        }
-      };
+}
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

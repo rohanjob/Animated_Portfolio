@@ -1,8 +1,8 @@
 import "./styles/style.css";
 
-const HoverLinks = ({ text, cursor }: { text: string; cursor?: boolean }) => {
+const HoverLinks = ({ text, disableCursor = true }: { text: string; disableCursor?: boolean }) => {
   return (
-    <div className="hover-link" data-cursor={!cursor && `disable`}>
+    <div className="hover-link" data-cursor={disableCursor ? "disable" : undefined}>
       <div className="hover-in">
         {text} <div>{text}</div>
       </div>
